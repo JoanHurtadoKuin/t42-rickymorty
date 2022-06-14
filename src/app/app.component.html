@@ -26,8 +26,26 @@
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
-
     </div>
+
+    <ul class="navbar-nav me-auto" ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" routerLink="/register">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
+    </ul>
+
+
+    <ul class="navbar-nav me-auto"ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" routerLink="/profile">{{username}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()">LogOut</a>
+      </li>
+    </ul>
   </nav>
 
   <div>

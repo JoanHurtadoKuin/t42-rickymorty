@@ -8,6 +8,12 @@ import { InformacionComponent } from './informacion/informacion.component';
 import { CharactersListComponent } from './components/characters-list/characters-list.component';
 import { CharactersDetailsComponent } from './components/characters-details/characters-details.component';
 import { AddCharactersComponent } from './components/add-characters/add-characters.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BoardUserComponent } from './board-user/board-user.component';
+import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
 
 const routes: Routes = [
   {
@@ -27,7 +33,7 @@ const routes: Routes = [
     component: InformacionComponent,
   },
   {
-    path: '',
+    path: 'characters',
     redirectTo: 'characters',
     pathMatch: 'full',
   },
@@ -43,6 +49,30 @@ const routes: Routes = [
     path: 'add',
     component: AddCharactersComponent,
   },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+  },
+  {
+    path: 'user',
+    component: BoardUserComponent,
+  },
+  {
+    path: 'mod',
+    component: BoardModeratorComponent,
+  },
+  {
+    path: 'admin',
+    component: BoardAdminComponent,
+  }
 ];
 
 @NgModule({
