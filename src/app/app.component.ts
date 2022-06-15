@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { TokenStorageService } from './_services/token-storage.service';
+import { Router, RouterModule } from '@angular/router';
+import { LoginService } from './services/auth/login.service';
+import { UserService } from './services/auth/user.service';
 
 
 @Component({
@@ -9,32 +10,32 @@ import { TokenStorageService } from './_services/token-storage.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 't37-rickymorty';
 
-  private roles: string[] = [];
-  isLoggedIn = false;
-  showAdminBoard = false;
-  showModeratorBoard = false;
-  username?: string;
 
-  constructor(private tokenStorageService: TokenStorageService){ }
+  constructor(private router:Router,private loginService: LoginService, private userService: UserService ){ }
+
+
+  user:any;
+  role:any;
+  log: any;
 
   ngOnInit(): void{
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    this.loginService.getUser$().subscribe(user => {
+      this.user = user;
+    });
 
-    if(this.isLoggedIn){
-      const user = this.tokenStorageService.getUser();
-      this.roles = user.roles;
+    this.userService.getUser$().subscribe(data => {
+      this.role = data.role;
+      this.log = 'Logout';
+    });
 
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-
-      this.username = user.username;
-    }
   }
 
   logout(): void{
-    this.tokenStorageService.signOut();
-    window.location.reload();
+   window.sessionStorage.clear();
+   this.user.username = '';
+   this.role = '';
+   this.log = 'Login';
+   this.router.navigate(['/login']);
   }
 }

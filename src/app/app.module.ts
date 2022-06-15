@@ -11,14 +11,10 @@ import { InformacionComponent } from './informacion/informacion.component';
 import { AddCharactersComponent } from './components/add-characters/add-characters.component';
 import { CharactersDetailsComponent } from './components/characters-details/characters-details.component';
 import { CharactersListComponent } from './components/characters-list/characters-list.component';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
-import { BoardAdminComponent } from './board-admin/board-admin.component';
-import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
-import { BoardUserComponent } from './board-user/board-user.component';
+import { FormsModule } from '@angular/forms'
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+
 
 @NgModule({
   declarations: [
@@ -31,12 +27,7 @@ import { BoardUserComponent } from './board-user/board-user.component';
     CharactersDetailsComponent,
     CharactersListComponent,
     LoginComponent,
-    RegisterComponent,
-    HomeComponent,
-    ProfileComponent,
-    BoardAdminComponent,
-    BoardModeratorComponent,
-    BoardUserComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
